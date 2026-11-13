@@ -1,0 +1,43 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <!-- Cuenta atrás en primer plano (sigue viva con YouTube o Netflix delante) -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <!-- Cerrar la app al terminar (solo tiene efecto hasta Android 13) -->
+  <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+  <!-- Opcional: pedir que Android no lo pare por ahorro de batería -->
+  <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+  <!-- Android 11+: para poder abrir estas apps y saber si están instaladas -->
+  <queries>
+    <package android:name="com.google.android.youtube" />
+    <package android:name="com.netflix.mediaclient" />
+  </queries>
+
+  <application>
+    <service
+      android:name="expo.modules.sleeptimer.SleepTimerService"
+      android:exported="false"
+      android:foregroundServiceType="specialUse">
+      <property
+        android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+        android:value="Temporizador para dormir: baja el volumen, pausa la reproducción y bloquea la pantalla al terminar" />
+    </service>
+
+    <!-- Solo para pulsar Inicio y bloquear el móvil al terminar. No lee la pantalla. -->
+    <service
+      android:name="expo.modules.sleeptimer.SleepLockService"
+      android:exported="true"
+      android:label="@string/sleep_timer_a11y_label"
+      android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService" />
+      </intent-filter>
+      <meta-data
+        android:name="android.accessibilityservice"
+        android:resource="@xml/sleep_timer_accessibility" />
+    </service>
+  </application>
+</manifest>

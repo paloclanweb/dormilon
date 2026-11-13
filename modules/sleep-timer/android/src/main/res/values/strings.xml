@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="sleep_timer_a11y_label">Dormilón (bloquear al terminar)</string>
+  <string name="sleep_timer_a11y_description">Cuando termina el temporizador, Dormilón usa este permiso solo para salir de YouTube o Netflix (botón Inicio) y bloquear el móvil, para que la pantalla se apague. No lee, no guarda y no envía nada de lo que aparece en la pantalla.</string>
+
+  <string name="sleep_timer_channel_name">Temporizador</string>
+  <string name="sleep_timer_channel_description">Cuenta atrás hasta apagar la reproducción</string>
+
+  <string name="sleep_timer_generic_app">La reproducción</string>
+  <string name="sleep_timer_notif_running">%1$s se apagará a las %2$s</string>
+  <string name="sleep_timer_notif_running_text_lock">En el último minuto bajará el volumen y después se bloqueará el móvil.</string>
+  <string name="sleep_timer_notif_running_text_nolock">En el último minuto bajará el volumen y después se pausará.</string>
+  <string name="sleep_timer_notif_fading">Bajando el volumen…</string>
+  <string name="sleep_timer_notif_fading_text">%1$s se apagará a las %2$s</string>
+  <string name="sleep_timer_notif_finishing">Apagando %1$s…</string>
+
+  <string name="sleep_timer_action_extend">+15 min</string>
+  <string name="sleep_timer_action_cancel">Cancelar</string>
+</resources>
